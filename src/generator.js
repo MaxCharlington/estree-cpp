@@ -1,7 +1,7 @@
 import * as Generator from './generator/index.js'
 
 const defaultState = {
-  strictMode: false
+  strictMode: true
 }
 
 export default function GenerateCode (tree, options) {

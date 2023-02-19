@@ -6,6 +6,7 @@ export function VariableDeclarator (leaf, toString) {
 }
 
 export function VariableDeclaration (leaf, toString) {
-  return (leaf.kind === 'const' ? 'const auto ' : 'auto ') +
-    leaf.declarations.map(toString).join() + ';'
+  const cosntness = (leaf.kind === 'const' ? 'const ' : '')
+  const type = (leaf.cpp_type ? `${leaf.cpp_type} ` : 'auto ')
+  return `${cosntness}${type}` + leaf.declarations.map(toString).join() + ';'
 }

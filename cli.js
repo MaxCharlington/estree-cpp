@@ -1,6 +1,7 @@
 import estreecpp from './index.js'
 import { once } from 'events'
 import { createReadStream, createWriteStream } from 'fs'
+
 const [,, inputFile, outputFile] = process.argv
 
 if (!inputFile) {
@@ -27,9 +28,12 @@ async function outputFullStream (stream, data) {
 }
 
 async function main () {
-  const inputStream = inputFile === '-' ? process.stdin : createReadStream(inputFile)
-  const inputBuffer = await readFullStream(inputStream)
-  const outputStream = !outputFile || outputFile === '-' ? process.stdout : createWriteStream(outputFile)
-  await outputFullStream(outputStream, estreecpp(inputBuffer.toString('utf-8')))
+  const inputStream = inputFile === '-' ? process.stdin : createReadStream(inputFile);
+  const inputBuffer = await readFullStream(inputStream);
+  const outputCodeStream = !outputFile || outputFile === '-' ? process.stdout : createWriteStream(outputFile);
+  const outputASTStream = !outputFile || outputFile === '-' ? process.stdout : createWriteStream(outputFile + "_ast");
+  const [ast, code] = estreecpp(inputBuffer.toString('utf-8'));
+  await outputFullStream(outputASTStream, ast);
+  await outputFullStream(outputCodeStream, code);
 }
 main()

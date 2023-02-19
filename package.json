@@ -1,37 +1,20 @@
 {
   "name": "estree-cpp",
-  "version": "0.2.0",
+  "version": "0.0.1",
   "description": "JavaScript to NectarCPP transpiler",
   "main": "index.js",
   "type": "module",
-  "bin": {
-    "estree-cpp": "cli.js",
-    "estree": "cli.js"
-  },
   "scripts": {
-    "test": "node cli.js example.js"
+    "test": "node cli.js tests/test0.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NectarJS/estree-cpp.git"
+    "url": "git+https://github.com/MaxCharlington/estree-cpp.git"
   },
-  "keywords": [
-    "estree",
-    "js",
-    "cpp",
-    "nectarjs"
-  ],
   "author": "Saiv46",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/NectarJS/estree-cpp/issues"
-  },
-  "homepage": "https://github.com/NectarJS/estree-cpp#readme",
   "dependencies": {
     "acorn": "^8.7.0",
     "acorn-walk": "^8.2.0"
-  },
-  "devDependencies": {
-    "standard": "^16.0.4"
   }
 }
